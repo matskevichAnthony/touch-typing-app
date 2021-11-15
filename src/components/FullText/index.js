@@ -10,6 +10,11 @@ const FullText = ({ text }) => {
 
 export default FullText;
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
+    position: absolute;
+    left:0;
+    top:0;
+    width: 100%;
+    background:red;
     padding: 1rem;
 `
