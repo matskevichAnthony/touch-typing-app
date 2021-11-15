@@ -33,10 +33,11 @@ export default EditableText;
 
 const WrapperContentEditable = styled(ContentEditable)`
     position: absolute;
-    left:0;
-    top:0;
-    width: 100%;
+    left:50;
+    top:50;
+    /* transform: translate(-50%, -50%); */
+    width: 90%;
+    height: 90%;
     padding: 1rem;
-    background:green;
     opacity:0.8;
 `

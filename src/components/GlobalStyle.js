@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
             background: whitesmoke;
             font-family: 'Inter', sans-serif;
             overflow-y: scroll;
+            background-color: #55c5ff;
         }
         `;
 

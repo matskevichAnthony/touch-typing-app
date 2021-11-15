@@ -17,8 +17,10 @@ const Training = () => {
     console.log(text);
     return (
         <TrainingWrapper>
-            <FullText text={text} />
-            <EditableText textArray={textArray} />
+            <TypingWrapper>
+                <FullText text={text} />
+                <EditableText textArray={textArray} />
+            </TypingWrapper>
         </TrainingWrapper>
     )
 
@@ -28,4 +30,21 @@ export default Training
 
 const TrainingWrapper = styled.div`
 position:relative;
+height: 100vh;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+`
+
+const TypingWrapper = styled.div`
+height: 50%;
+width: 50%;
+background-color: blue;
+position: relative;
+background: whitesmoke;
+display: flex;
+justify-content: center;
+align-items: center;
+
 `

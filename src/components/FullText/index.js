@@ -12,9 +12,10 @@ export default FullText;
 
 export const Wrapper = styled.div`
     position: absolute;
-    left:0;
-    top:0;
-    width: 100%;
-    background:red;
+    left:50;
+    top:50;
+    width: 90%;
+    height: 90%;
     padding: 1rem;
+    color:gray;
 `
