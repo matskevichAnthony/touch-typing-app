@@ -26,24 +26,27 @@ const Training = () => {
 
         if (counter === 0) {
             setFinish(true);
-            return;
         }
         // Сюда вставить старт true
-        if (finish === false) {
+        if (finish === false && start === true) {
             const timer =
                 counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
             return () => clearInterval(timer);
         }
-    }, [counter, finish]);
+    }, [counter, finish, start]);
 
 
     return (
         <TrainingWrapper>
-            {finish ? <FinishWindow setStart={setStart} counter={counter} setCounter={setCounter} setFinish={setFinish} currentText={currentText} setCurrentText={setCurrentText} position={position} setPosition={setPosition} /> : <></>}
+            {finish ? <FinishWindow setStart={setStart} counter={counter} setCounter={setCounter}
+                setFinish={setFinish} currentText={currentText} setCurrentText={setCurrentText}
+                position={position} setPosition={setPosition} /> : <></>}
 
             <TypingWrapper>
                 <FullText text={text} />
-                <EditableText textArray={textArray} currentText={currentText} setCurrentText={setCurrentText} position={position} setPosition={setPosition} start={start} setStart={setStart} counter={counter} finish={finish} />
+                <EditableText textArray={textArray} currentText={currentText} setCurrentText={setCurrentText}
+                    position={position} setPosition={setPosition} start={start} setStart={setStart}
+                    counter={counter} finish={finish} />
             </TypingWrapper>
         </TrainingWrapper>
     )

@@ -19,13 +19,15 @@ const FinishWindow = ({ data, setFinish, setStart, counter, setCounter, currentT
         setStart(false);
         setCounter(5);
         dispatch(getText())
-        console.log("clicked");
     }
 
     return (
         <BackgroundWrapper>
             <FinishWindowData>
-                <button onClick={() => clickHandler()}>START AGAIN!</button>
+                <p>Time taken:</p>
+                <p>Speed:</p>
+                <p>Errors amount:</p>
+                <button onClick={() => clickHandler()}>Start again!</button>
             </FinishWindowData>
         </BackgroundWrapper>
     )
@@ -34,13 +36,31 @@ const FinishWindow = ({ data, setFinish, setStart, counter, setCounter, currentT
 export default FinishWindow
 
 const FinishWindowData = styled.div`
-width: 40rem;
-height:40rem;
+width: 30rem;
+height:30rem;
 display:flex;
 justify-content: center;
+flex-direction: column;
 align-items: center;
 text-align:center;
 background: whitesmoke;
+border-radius: 20px;
+
+button{
+    border:none;
+    background-color: #55c5ff;
+    width: 7rem;
+    height: 3rem;
+    border-radius: 20px;
+    color: whitesmoke;
+    transition:all 0.5s linear;
+    &:hover{
+        background:tomato;
+    }
+}
+
+
+
 `
 const BackgroundWrapper = styled.div`
 width:100%;
@@ -49,7 +69,7 @@ display:flex;
 justify-content: center;
 align-items: center;
 text-align:center;
-background:black;
+background:#55c5ff;
 position: absolute;
 z-index:100;
 opacity:0.9;
