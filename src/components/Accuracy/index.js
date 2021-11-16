@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { FeedBackWindow } from '../InfoWindowStyle';
 
 
-const Accuracy = () => {
+const Accuracy = ({ correctSymbols, allSymbols }) => {
+
     return (
         <AccuracyWrapper>
-            accuracy
+            {correctSymbols > 0 && allSymbols > 0 ? Math.round((correctSymbols / allSymbols) * 100) : 100} %
         </AccuracyWrapper>
     )
 }

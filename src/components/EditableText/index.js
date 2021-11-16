@@ -1,26 +1,24 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Wrapper as FullTextWrapper } from '../FullText';
 import { FeedBackWindow } from '../InfoWindowStyle';
 import ContentEditable from 'react-contenteditable';
 import Speed from '../Speed';
 import Timer from '../Timer';
 import Accuracy from '../Accuracy';
 import { useSelector, useDispatch } from 'react-redux';
-const EditableText = ({ textArray, start, setStart, counter, setCounter, setFinish, finish, currentText, setCurrentText, position, setPosition }) => {
+import { startGame } from '../../actions/Timer';
+import FullText from '../FullText';
+const EditableText = ({ textArray, counter, currentText, setCurrentText, position, setPosition }) => {
 
-    //не забыть обнулить позишн при начале
-    // const [currentText, setCurrentText] = useState({ html: "" });
-    // const [position, setPosition] = useState(0);
     const [correctSymbol, setCorrectSymbol] = useState();
+    const [symbolsTyped, setSymbolsTyped] = useState(0);
+    const dispatch = useDispatch();
+    const { isStarted, isFinished } = useSelector((state) => state.timer);
 
-    const refContainer = useRef(currentText);
-    console.log(refContainer);
     const changeHandler = (e) => {
-        setStart(true);
+        dispatch(startGame());
         let lastChar = e.target.value.slice(-1);
-        console.log(lastChar, textArray[position]);
-
+        setSymbolsTyped(symbolsTyped + 1);
         if (lastChar === ";") {
             lastChar = " ";
         }
@@ -33,12 +31,11 @@ const EditableText = ({ textArray, start, setStart, counter, setCounter, setFini
             setCurrentText(prevText => ({ html: prevText.html }));
         }
     }
-    console.log("lol")
 
 
     return (
         <>
-            {start ?
+            {isStarted ?
                 <FeedBackWindow
                     style={correctSymbol ? { color: 'green' } : { color: 'red' }}>
                     {correctSymbol ? "Correct!" : "Incorrect!"}
@@ -48,16 +45,15 @@ const EditableText = ({ textArray, start, setStart, counter, setCounter, setFini
                 </FeedBackWindow>
             }
             <WrapperContentEditable
-                ref={refContainer}
                 html={currentText.html}
-                disabled={!finish ? false : true}
+                disabled={isFinished || !textArray.length}
                 onChange={changeHandler}
             />
 
             <InfoWindowsWrapper counter={counter}>
                 <Timer counter={counter}></Timer>
-                <Accuracy></Accuracy>
-                <Speed></Speed>
+                <Accuracy correctSymbols={position} allSymbols={symbolsTyped} />
+                <Speed counter={counter} correctSymbols={position} />
             </InfoWindowsWrapper>
 
         </>

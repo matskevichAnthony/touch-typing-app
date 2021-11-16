@@ -1,30 +1,20 @@
-import BaseComponent from 'bootstrap/js/dist/base-component';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getText } from '../../actions/Text';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { FeedBackWindow } from '../InfoWindowStyle';
 
 
-const FinishWindow = ({ data, setFinish, setStart, counter, setCounter, currentText, setCurrentText, position, setPosition }) => {
+const FinishWindow = ({ counter }) => {
 
-    const dispatch = useDispatch();
+    const { gameDuration } = useSelector((state) => state.timer);
 
     const clickHandler = () => {
-
-        setCurrentText({ html: "" })
-        console.log("finish in handler")
-        setPosition(0);
-        setFinish(false);
-        setStart(false);
-        setCounter(5);
-        dispatch(getText())
+        window.location.href = window.location.href;
     }
 
     return (
         <BackgroundWrapper>
             <FinishWindowData>
-                <p>Time taken:</p>
+                <p>Time taken: {gameDuration - counter} sec</p>
                 <p>Speed:</p>
                 <p>Errors amount:</p>
                 <button onClick={() => clickHandler()}>Start again!</button>
