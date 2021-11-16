@@ -13,6 +13,8 @@ const Training = () => {
         dispatch(getText())
     }, []);
 
+    const [currentText, setCurrentText] = useState({ html: "" });
+    const [position, setPosition] = useState(0);
     const [start, setStart] = useState(false);
     const [finish, setFinish] = useState(false);
     const [counter, setCounter] = useState(5);
@@ -24,6 +26,7 @@ const Training = () => {
 
         if (counter === 0) {
             setFinish(true);
+            return;
         }
         // Сюда вставить старт true
         if (finish === false) {
@@ -36,11 +39,11 @@ const Training = () => {
 
     return (
         <TrainingWrapper>
-            {finish ? <FinishWindow /> : <></>}
+            {finish ? <FinishWindow setStart={setStart} counter={counter} setCounter={setCounter} setFinish={setFinish} currentText={currentText} setCurrentText={setCurrentText} position={position} setPosition={setPosition} /> : <></>}
 
             <TypingWrapper>
                 <FullText text={text} />
-                <EditableText textArray={textArray} start={start} setStart={setStart} counter={counter} />
+                <EditableText textArray={textArray} currentText={currentText} setCurrentText={setCurrentText} position={position} setPosition={setPosition} start={start} setStart={setStart} counter={counter} finish={finish} />
             </TypingWrapper>
         </TrainingWrapper>
     )

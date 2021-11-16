@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { Wrapper as FullTextWrapper } from '../FullText';
 import { FeedBackWindow } from '../InfoWindowStyle';
@@ -7,30 +7,35 @@ import Speed from '../Speed';
 import Timer from '../Timer';
 import Accuracy from '../Accuracy';
 import { useSelector, useDispatch } from 'react-redux';
-const EditableText = ({ textArray, start, setStart, counter }) => {
+const EditableText = ({ textArray, start, setStart, counter, setCounter, setFinish, finish, currentText, setCurrentText, position, setPosition }) => {
 
-    const [currentText, setCurrentText] = useState({ html: "" });
-    const [positon, setPosition] = useState(0);
+    //не забыть обнулить позишн при начале
+    // const [currentText, setCurrentText] = useState({ html: "" });
+    // const [position, setPosition] = useState(0);
     const [correctSymbol, setCorrectSymbol] = useState();
 
-
-
+    const refContainer = useRef(currentText);
+    console.log(refContainer);
     const changeHandler = (e) => {
         setStart(true);
         let lastChar = e.target.value.slice(-1);
-        console.log(lastChar, textArray[positon]);
+        console.log(lastChar, textArray[position]);
+
         if (lastChar === ";") {
             lastChar = " ";
         }
-        if (lastChar === textArray[positon]) {
+        if (lastChar === textArray[position]) {
             setCurrentText({ html: e.target.value });
-            setPosition(positon + 1);
+            setPosition(position + 1);
             setCorrectSymbol(true);
         } else {
             setCorrectSymbol(false);
             setCurrentText(prevText => ({ html: prevText.html }));
         }
     }
+    console.log("lol")
+
+
     return (
         <>
             {start ?
@@ -43,12 +48,13 @@ const EditableText = ({ textArray, start, setStart, counter }) => {
                 </FeedBackWindow>
             }
             <WrapperContentEditable
+                ref={refContainer}
                 html={currentText.html}
-                disabled={false}
+                disabled={!finish ? false : true}
                 onChange={changeHandler}
             />
 
-            <InfoWindowsWrapper>
+            <InfoWindowsWrapper counter={counter}>
                 <Timer counter={counter}></Timer>
                 <Accuracy></Accuracy>
                 <Speed></Speed>

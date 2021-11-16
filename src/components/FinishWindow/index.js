@@ -1,19 +1,31 @@
 import BaseComponent from 'bootstrap/js/dist/base-component';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getText } from '../../actions/Text';
 import styled from 'styled-components';
 import { FeedBackWindow } from '../InfoWindowStyle';
 
 
-const FinishWindow = ({ data, setFinish, setStart, setCounter }) => {
+const FinishWindow = ({ data, setFinish, setStart, counter, setCounter, currentText, setCurrentText, position, setPosition }) => {
+
+    const dispatch = useDispatch();
 
     const clickHandler = () => {
 
+        setCurrentText({ html: "" })
+        console.log("finish in handler")
+        setPosition(0);
+        setFinish(false);
+        setStart(false);
+        setCounter(5);
+        dispatch(getText())
+        console.log("clicked");
     }
 
     return (
         <BackgroundWrapper>
             <FinishWindowData>
-                <button onClick={() => clickHandler}>START AGAIN!</button>
+                <button onClick={() => clickHandler()}>START AGAIN!</button>
             </FinishWindowData>
         </BackgroundWrapper>
     )
