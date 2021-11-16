@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 
-const FinishWindow = ({ counter }) => {
+const FinishWindow = ({ counter, correctSymbols, allSymbols }) => {
 
     const { gameDuration } = useSelector((state) => state.timer);
 
@@ -15,8 +15,8 @@ const FinishWindow = ({ counter }) => {
         <BackgroundWrapper>
             <FinishWindowData>
                 <p>Time taken: {gameDuration - counter} sec</p>
-                <p>Speed:</p>
-                <p>Errors amount:</p>
+                <p>Speed: {(counter > 0 && correctSymbols && gameDuration) ? Math.round(correctSymbols / (gameDuration - counter) * 60) : null} cpm</p>
+                <p>Accuracy: {correctSymbols > 0 && allSymbols > 0 ? Math.round((correctSymbols / allSymbols) * 100) : 100} %</p>
                 <button onClick={() => clickHandler()}>Start again!</button>
             </FinishWindowData>
         </BackgroundWrapper>

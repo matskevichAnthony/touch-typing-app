@@ -5,7 +5,7 @@ import { FeedBackWindow } from '../InfoWindowStyle';
 const Timer = ({ counter }) => {
     return (
         <TimerWrapper>
-            {counter}
+            {counter} sec
         </TimerWrapper>
     )
 }

@@ -1,12 +1,9 @@
 const initialState = {
     isStarted: false,
     isFinished: false,
-    gameDuration: 60
+    gameDuration: 40
 }
-
-
 const timerReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case 'START_GAME':
             return { ...state, isStarted: true };

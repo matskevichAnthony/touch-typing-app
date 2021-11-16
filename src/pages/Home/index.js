@@ -1,8 +1,6 @@
 import React from 'react';
 import { HomeWrapper, LeftSectionWrapper, RightSectionWrapper, ButtonToStart } from './style';
 const Home = () => {
-
-
     return (
         <HomeWrapper>
             <LeftSectionWrapper>
@@ -12,10 +10,8 @@ const Home = () => {
                 <p>We are here to help you to improve your <b>typing skills!</b></p>
                 <ButtonToStart to="/training">Start!</ButtonToStart>
             </RightSectionWrapper>
-
         </HomeWrapper>
-    )
-
-}
+    );
+};
 
 export default Home

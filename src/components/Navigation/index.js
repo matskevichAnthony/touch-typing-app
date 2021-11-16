@@ -6,7 +6,7 @@ import { StyledLink } from './style';
 const Navigation = () => {
 
     return (
-        <Navbar bg="primary" variant="dark">
+        <Navbar bg="light" variant="light">
             <Container>
                 <Navbar.Brand >TypeApp</Navbar.Brand>
                 <Nav className="me-auto">
