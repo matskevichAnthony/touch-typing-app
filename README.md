@@ -14,12 +14,12 @@
 
 ## Используемые технологии/библиотеки
 
--HTML
--CSS
--JavaScript
--Сreate-react-app: в качестве основы приложения на реакт.
--Redux: Redux в качестве хранилища состояния приложения.
--Redux Thunk: middleware для работы с асинхронными экшенами.-
--React-router-dom: роутинг в приложении.
--React-styled-components: для более удобной и упорядоченный работы со стайлингом компонентов
--React-contenteditable
+- HTML
+- CSS
+- JavaScript
+- Сreate-react-app: в качестве основы приложения на реакт.
+- Redux: Redux в качестве хранилища состояния приложения.
+- Redux Thunk: middleware для работы с асинхронными экшенами.-
+- React-router-dom: роутинг в приложении.
+- React-styled-components: для более удобной и упорядоченный работы со стайлингом компонентов
+- React-contenteditable
